@@ -1,0 +1,15 @@
+{
+  "name": "link-directories",
+  "version": "1.0.0",
+  "description": "Link your directories into node_modules",
+  "main": "index.js",
+  "bin": "link-directories",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Oroszi <robert@oroszi.net>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.1.1"
+  }
+}
