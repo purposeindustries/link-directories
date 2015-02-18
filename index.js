@@ -51,7 +51,7 @@ function link(src, dest, options) {
     if (x.code === 'ENOENT') {
       debug('link %s to %s', src, dest);
       fs.symlinkSync(src, dest, 'dir');
-      return process.exit(0);
+      return;
     }
     process.exit(1);
   }
