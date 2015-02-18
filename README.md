@@ -6,12 +6,12 @@ Basically this is what [@substack](https://github.com/substack) recommends in hi
 
 # usage
 
-1. Install it
+## Install it
 ~~~
 npm i link-directories --save
 ~~~
 
-2. Add it to postinstall hook in your package.json 
+## Add it to postinstall hook in your package.json 
 Read more about postinstall here: https://docs.npmjs.com/misc/scripts
 
 Let's say you want to require `foo.js` from lib directory (so basically `require('lib/foo.js')`), for this add a `link-directories` entry to your package.json.
@@ -32,11 +32,16 @@ Let's say you want to require `foo.js` from lib directory (so basically `require
 }
 ~~~
 
-3. Run `npm run postinstall`
+## Run `npm run postinstall`
 
 # why postinstall?
 
 Because if somebody starts to use your app/project they will `git clone your-repo && npm install`, so it will just work.
+
+# format
+
+currently this module expects an array which contains an object of `src` and `dest`.
+later we should we should add option to use array of strings (which should be interpreted `src: <string>, dest: <string>`), or set cwd, etc. but first we need to add tests.
 
 # license
 
