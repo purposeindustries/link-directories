@@ -42,15 +42,15 @@ links.forEach(function(opts) {
 
 
 function link(src, dest, options) {
-  src = path.join(options.root, src);
-  dest = path.join(options.root, dest);
+  var parent = path.normalize(path.join(dest, '..'));
+  var relSrc = path.relative(parent, src);
   try{
     debug('stating %s', dest);
     fs.statSync(dest);
   } catch(x) {
     if (x.code === 'ENOENT') {
-      debug('link %s to %s', src, dest);
-      fs.symlinkSync(src, dest, 'dir');
+      debug('link %s to %s', relSrc, dest);
+      fs.symlinkSync(relSrc, dest, 'dir');
       return;
     }
     process.exit(1);
