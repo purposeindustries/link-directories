@@ -11,27 +11,26 @@ try {
   fs.statSync(packageJSON);
 } catch(x) {
   debug('package.json does not exist here: %s', packageJSON);
-  process.exit(0);
+  process.exit(1);
 }
 
 try{
   json = require(packageJSON);
 } catch(x) {
   debug('failed to parse package.json from here: %s', packageJSON);
-  process.exit(0);
+  process.exit(1);
 }
 
 links = json['link-directories'];
 if (!Array.isArray(links)) {
   debug('links does not seem to an array: %j', links);
-  process.exit(0);
+  process.exit(1);
 }
 
 try {
   fs.statSync(nodeModules);
 } catch(x) {
-  debug('does not exist %s, exiting', nodeModules);
-  process.exit(0);
+  fs.mkdirSync(nodeModules);
 }
 
 links.forEach(function(opts) {
