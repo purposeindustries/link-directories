@@ -30,8 +30,7 @@ if (!Array.isArray(links)) {
 try {
   fs.statSync(nodeModules);
 } catch(x) {
-  debug('does not exist %s, exiting', nodeModules);
-  process.exit(0);
+  fs.mkdirSync(nodeModules);
 }
 
 links.forEach(function(opts) {
